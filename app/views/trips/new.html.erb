@@ -9,11 +9,10 @@
   	<%= f.number_field :length %>
   </div>
 
-  <div class="field">
-  	<%= f.label :type_of_trip %>
-  	<%= f.number_field :trip_type %>
+   <div class="field">
+    <%= f.label :type_of_trip %>
+    <%= f.select :trip_type, Trip.trip_types.keys.to_a, include_blank: true %>
   </div>
-
   <div class="actions">
     <%= f.submit "Create Trip" %>
   </div>

@@ -7,7 +7,7 @@ feature "user creates new trip" do
   click_on "New Trip"
   fill_in "trip_location", with: "Philly"
   fill_in "trip_length", with: 7
-  fill_in "trip_trip_type", with: 1
+  select "Festival", from: "trip_trip_type"
   click_on "Create Trip"
 
   expect(page).to have_css "p", text: "Philly"
