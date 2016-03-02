@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :path => 'accounts'
+
+  resources :users, only: [:show]
+  resources :trips, only: [:new, :show, :create, :index]
+
   get 'pages/home'
 
   root 'pages#home'
