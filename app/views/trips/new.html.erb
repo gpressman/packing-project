@@ -1,0 +1,21 @@
+<%= form_for @trip do |f| %>
+  <div class="field">
+  	<%= f.label :location %>
+  	<%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :how_many_days? %>
+  	<%= f.number_field :length %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :type_of_trip %>
+  	<%= f.number_field :trip_type %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Trip" %>
+  </div>
+
+<% end %>
