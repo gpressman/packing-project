@@ -4,22 +4,22 @@
     <li><%= item.name %></li>
   <% end %>
 </ul>
-  
 
-<%= form_for  ([@trip, @item]) do |f| %>
+<ul>
+  <% @trip.lists.each do |list| %>
+    <li><%= list.owner %></li>
+  <% end %>
+</ul>
   
+<%= form_for ([@trip, @list]) do |f| %>
   <div class="field">
-  	<%= f.label :name %>
-  	<%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :item_type %>
-    <%= f.select :item_type, Item.item_types.keys.to_a, include_blank: true %>
+  	<%= f.label :owner %>
+  	<%= f.text_field :owner %>
   </div>
 
   <div class="actions">
   	<%= f.submit %>
   </div>
-
 <% end %>
+
+

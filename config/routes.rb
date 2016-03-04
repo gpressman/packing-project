@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :trips, only: [:new, :show, :create, :index] do
-    resources :items, only: [:new, :show, :index, :create]
+    resources :items, only: [:new, :show, :index, :create] do 
+      resources :lists, only: [:new, :show, :index, :create]
+    end
   end
 
   get 'pages/home'

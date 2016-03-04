@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require 'features/sign_in'
+require 'features/functions'
 require 'spec_helper'
 require 'database_cleaner'
 require File.expand_path("../../config/environment", __FILE__)

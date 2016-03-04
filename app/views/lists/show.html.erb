@@ -1,0 +1,19 @@
+<p><%= @list.owner %></p>
+
+<%= form_for  ([@trip, @list, @item]) do |f| %>
+  
+  <div class="field">
+  	<%= f.label :name %>
+  	<%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :item_type %>
+    <%= f.select :item_type, Item.item_types.keys.to_a, include_blank: true %>
+  </div>
+
+  <div class="actions">
+  	<%= f.submit %>
+  </div>
+
+<% end %>

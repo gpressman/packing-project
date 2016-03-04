@@ -7,4 +7,13 @@ module Features
     fill_in "user_password", with: "password"
     click_on "Log in"
   end
+
+  def create_trip
+  	sign_in
+    visit new_trip_path
+    fill_in "trip_location", with: "PHilly"
+    fill_in "trip_length", with: 7
+    select "Festival", from: "trip_trip_type"
+    click_on "Create Trip"
+  end
 end

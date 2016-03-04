@@ -9,9 +9,9 @@ class ItemsController < ApplicationController
   	@trip = Trip.find(params[:trip_id])
   	@item = @trip.items.new(item_params)
   	if @item.save
-  	  redirect_to (@trip)
+  	  redirect_to trip_list_path(@trip, @list)
   	else
-  	  render @trip
+  	  render @list
   	end
   end
 
