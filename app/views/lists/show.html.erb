@@ -1,5 +1,13 @@
 <p><%= @list.owner %></p>
 
+<ul>
+  <% @list.items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+
+	
+</ul>
+
 <%= form_for  ([@trip, @list, @item]) do |f| %>
   
   <div class="field">
@@ -17,3 +25,4 @@
   </div>
 
 <% end %>
+

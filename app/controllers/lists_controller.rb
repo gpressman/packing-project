@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   def show
+  	@trip = Trip.find(params[:trip_id])
   	@list = List.find(params[:id])
+  	@item = @list.items.new
   end
 
   def new

@@ -2,12 +2,13 @@ class ItemsController < ApplicationController
   def new
   	@user = current_user
   	@trip = Trip.find(params[:id])
-  	@item = @trip.items.new
+  	
   end
 
-  def create
-  	@trip = Trip.find(params[:trip_id])
-  	@item = @trip.items.new(item_params)
+  def create 	
+    @trip = Trip.find(params[:trip_id])
+    @list = List.find(params[:list_id])
+  	@item = @list.items.new(item_params)
   	if @item.save
   	  redirect_to trip_list_path(@trip, @list)
   	else
