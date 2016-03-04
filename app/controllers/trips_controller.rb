@@ -2,6 +2,7 @@ class TripsController < ApplicationController
   
   def show 
     @trip = Trip.find(params[:id])
+    @item = @trip.items.new
   end
 
   def index

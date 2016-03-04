@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, :path => 'accounts'
 
   resources :users, only: [:show]
-  resources :trips, only: [:new, :show, :create, :index]
+  resources :trips, only: [:new, :show, :create, :index] do
+    resources :items, only: [:new, :show, :index, :create]
+  end
 
   get 'pages/home'
 
