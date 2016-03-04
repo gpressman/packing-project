@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @list = List.find(params[:list_id])
   	@item = @list.items.new(item_params)
+    @item = Item.where(name: @item.name).first_or_create(item_params)
+    unless @list.items.include?(@item)
+      @list.items << @item
+    end
   	if @item.save
   	  redirect_to trip_list_path(@trip, @list)
   	else
