@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   	@trip = Trip.find(params[:trip_id])
   	@list = List.find(params[:id])
   	@item = @list.items.new
+    @suggestion = Suggestion.find_by(name: @trip.trip_type)
   end
 
   def new

@@ -1,6 +1,7 @@
 module Features
 
   def sign_in
+    Suggestion.create(name: "Festival")
     User.create(email: "a@b.com", password: "password")
     visit new_user_session_path
     fill_in "user_email", with: "a@b.com"

@@ -2,7 +2,9 @@ class TripsController < ApplicationController
   
   def show 
     @trip = Trip.find(params[:id])
+    trip_type = @trip.trip_type
     @list = @trip.lists.new
+    @suggestion = Suggestion.find_by(name: @trip.trip_type)
   end
 
   def index

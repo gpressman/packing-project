@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :path => 'accounts'
 
+
+  resources :suggestions
   resources :users, only: [:show]
   resources :trips, only: [:new, :show, :create, :index] do
     resources :lists, only: [:new, :show, :index, :create] do 

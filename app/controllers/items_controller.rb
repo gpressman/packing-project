@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def new
   	@user = current_user
-  	@trip = Trip.find(params[:id])  	
+  	@trip = Trip.find(params[:trip_id])  	
   end
 
   def create 	
@@ -9,8 +9,10 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
   	@item = @list.items.new(item_params)
     @item = Item.where(name: @item.name).first_or_create(item_params)
+    @suggestion = Suggestion.find_by(name: @trip.trip_type)
     unless @list.items.include?(@item)
       @list.items << @item
+      @suggestion.items << @item
     end
   	if @item.save
   	  redirect_to trip_list_path(@trip, @list)

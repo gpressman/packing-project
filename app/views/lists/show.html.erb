@@ -3,10 +3,18 @@
 <ul>
   <% @list.items.each do |item| %>
     <li><%= item.name %></li>
-  <% end %>
-
-	
+  <% end %>	
 </ul>
+
+<h2>Suggestions for <%= @trip.trip_type %></h2>
+<% if @suggestion %>
+<% if @suggestion.items %>
+  <% @suggestion.items.each do |item| %>
+   <p> <%= item.name %></p>
+    <% end %>
+<% end %>
+<% end %>
+
 
 <%= form_for  ([@trip, @list, @item]) do |f| %>
   

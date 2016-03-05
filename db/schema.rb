@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304233547) do
+ActiveRecord::Schema.define(version: 20160305163436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,25 @@ ActiveRecord::Schema.define(version: 20160304233547) do
   add_index "items_lists", ["item_id"], name: "index_items_lists_on_item_id", using: :btree
   add_index "items_lists", ["list_id"], name: "index_items_lists_on_list_id", using: :btree
 
+  create_table "items_suggestions", id: false, force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "suggestion_id"
+  end
+
+  add_index "items_suggestions", ["item_id"], name: "index_items_suggestions_on_item_id", using: :btree
+  add_index "items_suggestions", ["suggestion_id"], name: "index_items_suggestions_on_suggestion_id", using: :btree
+
   create_table "lists", force: :cascade do |t|
     t.string   "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "trip_id"
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "trips", force: :cascade do |t|
