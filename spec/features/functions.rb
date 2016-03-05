@@ -16,4 +16,17 @@ module Features
     select "Festival", from: "trip_trip_type"
     click_on "Create Trip"
   end
+
+  def create_list
+    create_trip
+    fill_in "list_owner", with: "Gabe"
+    click_on "Create List"
+  end
+
+  def create_item
+    create_list
+    fill_in "item_name", with: "Towel"
+    select "Toiletries", from: "item_item_type"
+    click_on "Create Item"
+  end
 end

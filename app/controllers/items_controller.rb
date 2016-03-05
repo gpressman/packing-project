@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   def new
   	@user = current_user
-  	@trip = Trip.find(params[:id])
-  	
+  	@trip = Trip.find(params[:id])  	
   end
 
   def create 	
