@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
 
   resources :suggestions
-  resources :users, only: [:show]
-  resources :trips, only: [:new, :show, :create, :index] do
-    resources :lists, only: [:new, :show, :index, :create] do 
-      resources :items, only: [:new, :show, :index, :create]
-      
+  resources :users, only: [:show] do 
+    resources :trips, only: [:new, :show, :create, :index] do
+      resources :lists, only: [:new, :show, :index, :create] do 
+        resources :items, only: [:new, :show, :index, :create]
+      end
     end
   end
 

@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   	@trip = Trip.find(params[:trip_id])  	
   end
 
-  def create 	
+  def create 
+    @user = current_user	
     @trip = Trip.find(params[:trip_id])
     @list = List.find(params[:list_id])
   	@item = @list.items.new(item_params)
@@ -15,7 +16,7 @@ class ItemsController < ApplicationController
       @suggestion.items << @item
     end
   	if @item.save
-  	  redirect_to trip_list_path(@trip, @list)
+  	  redirect_to user_trip_list_path(@user, @trip, @list)
   	else
   	  render @list
   	end

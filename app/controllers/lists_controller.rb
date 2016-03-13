@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def show
+    @user = current_user
   	@trip = Trip.find(params[:trip_id])
   	@list = List.find(params[:id])
   	@item = @list.items.new
@@ -12,10 +13,11 @@ class ListsController < ApplicationController
   end
 
   def create
+    @user = current_user
   	@trip = Trip.find(params[:trip_id])
   	@list = @trip.lists.new(list_params)
   	  if @list.save
-  	  	redirect_to trip_list_path(@trip, @list)
+  	  	redirect_to user_trip_list_path(@user, @trip, @list)
   	  else
   	    render @trip
   	end

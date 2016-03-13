@@ -1,7 +1,7 @@
 <p><%= @suggestion.name %></p>
 
   
-<%= form_for ([@trip, @list]) do |f| %>
+<%= form_for ([@user, @trip, @list]) do |f| %>
   <div class="field">
   	<%= f.label :owner %>
   	<%= f.text_field :owner %>
