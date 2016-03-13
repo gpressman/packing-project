@@ -1,6 +1,7 @@
 module Features
 
   def sign_in
+    Prepared.create(name: "Festival")
     Suggestion.create(name: "Festival")
     User.create(email: "a@b.com", password: "password")
     visit new_user_session_path
@@ -11,7 +12,7 @@ module Features
 
   def create_trip
   	sign_in
-    visit new_trip_path
+    click_on "New Trip"
     fill_in "trip_location", with: "PHilly"
     fill_in "trip_length", with: 7
     select "Festival", from: "trip_trip_type"

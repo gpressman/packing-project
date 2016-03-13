@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   	@list = List.find(params[:id])
   	@item = @list.items.new
     @suggestion = Suggestion.find_by(name: @trip.trip_type)
+    @prepared = Prepared.find_by(name: @trip.trip_type)
   end
 
   def new
@@ -16,6 +17,7 @@ class ListsController < ApplicationController
     @user = current_user
   	@trip = Trip.find(params[:trip_id])
   	@list = @trip.lists.new(list_params)
+
   	  if @list.save
   	  	redirect_to user_trip_list_path(@user, @trip, @list)
   	  else

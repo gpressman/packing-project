@@ -4,7 +4,7 @@ feature "user creates item" do
   scenario "successfully" do
   sign_in
   
-  visit new_trip_path
+  click_on "New Trip"
   
   fill_in "trip_location", with: "PHilly"
   fill_in "trip_length", with: 7
