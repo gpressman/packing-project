@@ -12,4 +12,17 @@ class Item < ActiveRecord::Base
       suggestion.items << item
     end
   end
+  def add_to_preset(item, suggestion, prepared)
+  count = 0
+    suggestion.items.each do |item|
+      if item.name == item.name
+        count+=1
+      end
+    end
+    if count >= 5
+      unless prepared.items.include?(item)
+        prepared.items << item
+      end
+    end
+  end
 end
