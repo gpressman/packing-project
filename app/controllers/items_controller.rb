@@ -9,13 +9,14 @@ class ItemsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @list = List.find(params[:list_id])
   	@item = @list.items.new(item_params)
-    @item = Item.where(name: @item.name).first_or_create(item_params)
     @suggestion = Suggestion.find_by(name: @trip.trip_type)
     @prepared = Prepared.find_by(name: @trip.trip_type)
-    unless @list.items.include?(@item)
-      @list.items << @item
-      @suggestion.items << @item
-    end
+    @item = Item.where(name: @item.name).first_or_create(item_params)
+    @item.add_to_list(@item, @list, @suggestion)
+    # unless @list.items.include?(@item)
+    #   @list.items << @item
+    #   @suggestion.items << @item
+    # end
     count = 0
     @suggestion.items.each do |item|
       if item.name == @item.name

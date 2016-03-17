@@ -1,5 +1,7 @@
-<p><%= @suggestion.name %></p>
 
+<% if @suggestion %>
+  <p><%= @suggestion.name %></p>
+<% end %>
   
 <%= form_for ([@user, @trip, @list]) do |f| %>
   <div class="field">

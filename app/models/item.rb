@@ -5,4 +5,11 @@ class Item < ActiveRecord::Base
   
 
   enum item_type: [:Toiletries, :Clothing, :Misc]
+
+  def add_to_list(item, list, suggestion)
+  	unless list.items.include?(item)
+      list.items << item
+      suggestion.items << item
+    end
+  end
 end

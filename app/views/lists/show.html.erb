@@ -16,10 +16,12 @@
 <% end %>
 
 <h2>Prepared list for <%= @trip.trip_type %></h2>
+<% if @prepared %>
 <% if @prepared.items %>
   <% @prepared.items.each do |item| %>
     <span><%= item.name %></span>
   <% end %>
+<% end %>
 <% end %>
 
 
