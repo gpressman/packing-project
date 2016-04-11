@@ -12,6 +12,7 @@ class Item < ActiveRecord::Base
       suggestion.items << item
     end
   end
+  
   def add_to_preset(item, suggestion, prepared)
   count = 0
     suggestion.items.each do |item|

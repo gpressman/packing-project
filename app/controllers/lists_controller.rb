@@ -16,8 +16,7 @@ class ListsController < ApplicationController
   def create
     @user = current_user
   	@trip = Trip.find(params[:trip_id])
-  	@list = @trip.lists.new(list_params)
-
+  	@list = @trip.lists.new(list_params) 
   	  if @list.save
   	  	redirect_to user_trip_list_path(@user, @trip, @list)
   	  else
